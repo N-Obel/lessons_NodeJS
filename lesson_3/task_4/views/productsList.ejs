@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Products List</title>
+	<style>
+		.products {
+			padding: 20px;
+			background-color: #e3e3e3;
+		}
+
+		.table__row:first-child {
+			background-color: yellow;
+		}
+
+		.table__row td {
+			width: 150px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="products">
+		<table class="products__table table">
+			<tr class="table__row">
+				<td>
+					Назва гри
+				</td>
+				<td>
+					Жанр
+				</td>
+				<td>
+					Мінімальний вік гравця
+				</td>
+				<td>
+					Мінімальна кількість гравців
+				</td>
+				<td>
+					Максимальна кількість гравців
+				</td>
+				<td>
+					Ціна
+				</td>
+				<td>
+					Кількість
+				</td>
+			</tr>
+			<%for (const product of products) {%>
+				<tr class="table__row">
+					<td>
+						<%=product.title%>
+					</td>
+					<td>
+						<%=product.genre%>
+					</td>
+					<td>
+						<%=product.minPlayerAge%>
+					</td>
+					<td>
+						<%=product.minPlayersNum%>
+					</td>
+					<td>
+						<%=product.maxPlayersNum%>
+					</td>
+					<td>
+						<%=product.price%>
+					</td>
+					<td>
+						<%=product.amount%>
+					</td>
+				</tr>
+				<%}%>
+		</table>
+		<hr>
+		<ul class="products__list">
+			<%for (const product of products) {%>
+				<li>
+					<%=product.title%>
+						<%=product.genre%>
+							<%=product.minPlayerAge%>
+								<%=product.minPlayersNum%>
+									<%=product.maxPlayersNum%>
+										<%=product.price%>
+											<%=product.amount%>
+				</li>
+				<%}%>
+		</ul>
+	</div>
+	<hr>
+	<a href="/">Back</a>
+</body>
+
+</html>

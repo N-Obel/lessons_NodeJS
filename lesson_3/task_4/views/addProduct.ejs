@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add game</title>
+</head>
+
+<body>
+	<h1 class="title">
+		<%=title %>
+	</h1>
+
+	<form action="" method="post" class="form">
+		<div class="form__body">
+			<div class="form__item">
+				<label for="">
+					Game name
+					<input type="text" name="title">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Game genre
+					<input type="text" name="genre">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Players age
+					<input type="number" name="minPlayerAge">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Min num of players
+					<input type="number" name="minPlayersNum">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Max num of players
+					<input type="number" name="maxPlayersNum">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Price
+					<input type="number" name="price">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Amount
+					<input type="number" name="amount">
+				</label>
+			</div>
+		</div>
+		<button type="submit">Create form</button>
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <header>
+		<p>Задача 4. З використанням роутерів та шаблонізаторів розробити інтернет магазин з такими сторінками:</p>
+		<ul>
+			<li>about – як статична сторінка (розмістити у public)</li>
+			<li>сторінка додавання продукту (поки лише відображаємо поля для заповнення інформації)</li>
+			<li>сторінка відображення продуктів (у формі таблиці і списку)</li>
+			<li>головна – знаходяться посилання на сторінки about і products і addproducts</li>
+		</ul>
+	</header>
+
+  <div class="menu">
+    <nav class="menu__body">
+      <ul class="menu__list">
+        <li class="menu__item">
+          <a href="about.html" class="menu__link">About</a>
+        </li>
+        <li class="menu__item">
+          <a href="/products" class="menu__link">Games list</a>
+        </li>
+        <li class="menu__item">
+          <a href="/products/add" class="menu__link">Add game</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</body>
+
+</html>
