@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Product Info</title>
+	<style>
+		.link {
+			display: flex;
+			/* align-self: flex-start; */
+			justify-self: start;
+			padding: 5px 20px;
+			border-radius: 8px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.2;
+			transition: all 0.3s ease 0s;
+			color: #fff;
+			cursor: pointer;
+			background-color: #807d7e;
+			border: 1px solid transparent;
+			text-decoration: none;
+		}
+
+		.link:hover {
+			background-color: transparent;
+			border: 1px solid #2a2f2f;
+			color: #2a2f2f;
+		}
+
+		body {
+			max-width: 1270px;
+			margin: 0 auto;
+			padding: 30px 15px;
+		}
+
+		hr {
+			margin: 30px 0;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+			display: inline-block;
+		}
+
+		.link {
+			display: flex;
+			justify-self: start;
+			padding: 5px 20px;
+			border-radius: 8px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.2;
+			transition: all 0.3s ease 0s;
+			color: #fff;
+			cursor: pointer;
+			background-color: #807d7e;
+			border: 1px solid transparent;
+			text-decoration: none;
+		}
+
+		.link:hover {
+			background-color: transparent;
+			border: 1px solid #2a2f2f;
+			color: #2a2f2f;
+		}
+
+		.cards {
+			display: flex;
+			gap: 20px;
+			flex-wrap: wrap;
+		}
+
+		.card {
+			padding: 20px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+			flex-direction: column;
+			border: 1px solid #2a2f2f;
+			border-radius: 8px;
+			margin-bottom: 20px;
+		}
+
+		.card__image {
+			width: 200px;
+			height: 200px;
+		}
+
+		.card__image img {
+			max-width: 100%;
+			object-fit: cover;
+		}
+
+		.card__text {
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.2;
+			margin-bottom: 2px;
+		}
+
+		.card__text span {
+			font-size: 17px;
+			font-weight: 600;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="card">
+		<div class="card__image">
+			<img src="/images/<%= product.imagePath %>" alt="Image">
+		</div>
+		<div class="card__body">
+			<div class="card__text">
+				<span>Назва гри:</span>
+				<%=product.title%>
+			</div>
+			<div class="card__text">
+				<span>Жанр:</span>
+				<%=product.genre%>
+			</div>
+			<div class="card__text">
+				<span>Мінімальний вік гравця:</span>
+				<%=product.minPlayerAge%>
+			</div>
+			<div class="card__text">
+				<span>Мінімальна кількість гравців:</span>
+				<%=product.minPlayersNum%>
+			</div>
+			<div class="card__text">
+				<span>Максимальна кількість гравців:</span>
+				<%=product.maxPlayersNum%>
+			</div>
+			<div class="card__text">
+				<span>Ціна:</span>
+				<%=product.price%>
+			</div>
+			<div class="card__text">
+				<span>Кількість:</span>
+				<%=product.amount%>
+			</div>
+			<div class="card__actions">
+				<button>Edit</button>
+				<button>Delete</button>
+			</div>
+		</div>
+	</div>
+	<a class="link" href="/products">Назад до каталогу</a>
+</body>
+
+</html>

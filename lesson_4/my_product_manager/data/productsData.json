@@ -1,0 +1,35 @@
+[
+	{
+		"id": 1,
+		"title": "Alias",
+		"genre": "fun",
+		"minPlayerAge": 10,
+		"minPlayersNum": 4,
+		"maxPlayersNum": 8,
+		"price": 400,
+		"amount": 5,
+		"imagePath": "game1.png"
+	},
+	{
+		"id": 2,
+		"title": "Magical World",
+		"genre": "strategy",
+		"minPlayerAge": 14,
+		"minPlayersNum": 3,
+		"maxPlayersNum": 7,
+		"price": 300,
+		"amount": 2,
+		"imagePath": "game2.png"
+	},
+	{
+		"id": 3,
+		"title": "Chubrs",
+		"genre": "educational",
+		"minPlayerAge": 4,
+		"minPlayersNum": 3,
+		"maxPlayersNum": 7,
+		"price": 200,
+		"amount": 7,
+		"imagePath": "game3.png"
+	}
+]

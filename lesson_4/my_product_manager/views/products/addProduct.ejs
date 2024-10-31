@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add game</title>
+	<style>
+		body {
+			max-width: 1270px;
+			margin: 0 auto;
+			padding: 30px 15px;
+		}
+
+		.title {
+			text-align: center;
+		}
+
+		.form {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 15px;
+		}
+
+		.form__body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		.form__item {
+			width: 100%;
+		}
+
+		.form__item label {
+			font-size: 17px;
+			font-weight: 600;
+		}
+		.form__item label input{
+			width: 100%;
+		}
+
+		.form__item img {
+			object-fit: cover;
+		}
+
+		.link {
+			display: flex;
+			align-self: center;
+			padding: 5px 20px;
+			border-radius: 8px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.2;
+			transition: all 0.3s ease 0s;
+			color: #fff;
+			cursor: pointer;
+			background-color: #807d7e;
+			border: 1px solid transparent;
+			text-decoration: none;
+		}
+
+		.link:hover {
+			background-color: transparent;
+			border: 1px solid #2a2f2f;
+			color: #2a2f2f;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<%=title %>
+	</h1>
+
+	<form action="/products" method="post" class="form">
+		<div class="form__body">
+			<div class="form__item">
+				<label for="">
+					Назва гри:
+					<input type="text" name="title">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Жанр:
+					<input type="text" name="genre">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Мінімальний вік гравця:
+					<input type="number" name="minPlayerAge">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Мінімальна кількість гравців:
+					<input type="number" name="minPlayersNum">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Максимальна кількість гравців:
+					<input type="number" name="maxPlayersNum">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Ціна:
+					<input type="number" name="price">
+				</label>
+			</div>
+			<div class="form__item">
+				<label for="">
+					Кількість:
+					<input type="number" name="amount">
+				</label>
+			</div>
+			<div class="form__item">
+				<img src="<%= imagePath %>" alt="Image">
+			</div>
+		</div>
+		<button class="link" type="submit">Додати гру</button>
+	</form>
+</body>
+
+</html>
