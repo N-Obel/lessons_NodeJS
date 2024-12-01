@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Каталог автомобілей</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="/javascripts/RequestManager.js"></script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<%-include('../sections/header.ejs')%>
+			<main class="page">
+				<section class="page__cars cars">
+					<div class="cars__container">
+						<div class="cars__title">Каталог автомобілей</div>
+						<div class="cars__items">
+							<% cars.forEach(car=>{ %>
+								<div class="car__item item-car">
+									<a href="/cars/<%= car.id %>">
+										<div class="item-car__image">
+											<img src="<%= car.imgSrc %>" alt="CarImage">
+										</div>
+										<div class="item-car__body">
+											<div>
+												<span>Марка авто:</span>
+												<%= car.carBrand %>
+											</div>
+											<div>
+												<span>Рік випуску:</span>
+												<%= car.carYear %>
+											</div>
+											<div>
+												<span>Держ. номер:</span>
+												<%= car.carNum %>
+											</div>
+											<div>
+												<span>Власник:</span>
+												<%= car.owner?.ownerName || car.owner %>
+											</div>
+										</div>
+										<div class="item-car__actions actions">
+											<a href="/cars/edit/<%= car.id %>" class="actions__edit">Редагувати</a>
+											<button class="actions__delete" onclick="RequestManager.deleteRequest('/cars/carsList', { id: '<%= car.id%>' })">Видалити</button>
+										</div>
+									</a>
+								</div>
+								<% }) %>
+						</div>
+						<br>
+						<a class="button" href="../cars/carForm">Додати новий автомобіль</a>
+					</div>
+				</section>
+			</main>
+			<%-include('../sections/footer.ejs')%>
+	</div>
+</body>
+
+</html>
