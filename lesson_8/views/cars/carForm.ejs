@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="/javascripts/RequestManager.js"></script>
+	<title>Інформація про авто</title>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<%-include('../sections/header.ejs')%>
+			<main class="page">
+				<section class="page__car-form  form-car">
+					<div class="form-car__container">
+
+						<form class="form-car" action="<%= car.id ? '/cars/edit/' + car.id + '?_method=PUT' : '/cars/carForm' %>" enctype="multipart/form-data" method="post">
+							<div class="form-car__body">
+								<div class="form-car__item form-car__item--image">
+									<label>
+										Зображення авто:
+										<input type="file" value="<%= car.imgSrc %>" name="carImg" accept="image/*" onchange="RequestManager.handleFileSelect(event, '#imgPreview')" />
+									</label>
+									<img id="imgPreview" src="<%= car && car.imgSrc ? car.imgSrc : '/noImage.png' %>" alt="Car_image_preview" />
+								</div>
+								<div class="form-car__item">
+									<label>
+										Марка авто:
+										<input type="text" name="carBrand" value="<%= car.carBrand %>" required />
+									</label>
+								</div>
+								<div class="form-car__item">
+									<label>
+										Рік випуску авто:
+										<input type="number" name="carYear" value="<%= car.carYear %>" required />
+									</label>
+								</div>
+								<div class="form-car__item">
+									<label>
+										Державний номер авто:
+										<input type="text" name="carNum" value="<%= car.carNum %>" required />
+									</label>
+								</div>
+								<!-- ================================= -->
+								<div class="form-car__item">
+								<select name="owner" multiple>
+									<% owners.forEach(owner=>{ %>
+										<option value="<%= owner._id %>">
+											<span>Власник авто: </span><%= owner.ownerName %>
+											<span>|| Реєстарція: </span><%= owner.ownerCity %>
+										</option>
+										<% }) %>
+								</select>
+								</div>
+								<!-- ================================= -->
+							</div>
+							<% if (errors?.length> 0) { %>
+								<div class="errors">
+									<ul class="errors__list">
+										<% errors.forEach(error=> { %>
+											<li>
+												<%= error.msg %>
+											</li>
+											<% }) %>
+									</ul>
+								</div>
+								<% } %>
+									<button class="button" type="submit">
+										<%= car.id ? 'Оновити' : 'Створити' %>
+									</button>
+						</form>
+
+						<a class="button" href="/cars/carsList">До каталогу автомобілів</a>
+					</div>
+				</section>
+			</main>
+			<%-include('../sections/footer.ejs')%>
+	</div>
+</body>
+
+</html>
