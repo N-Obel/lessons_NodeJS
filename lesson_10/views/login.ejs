@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<title>Login</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__title">Вітаємо у нашому магазині</div>
+			</div>
+		</header>
+			<main class="page">
+				<section class="page__authorization authorization">
+					<div class="authorization__container">
+						<div class="authorization__body">
+							<h1 class="authorization__title">Особисті дані :</h1>
+							<form class="authorization__form form-authorization" action="/auth/login" method="POST">
+								<div class="form-authorization__body">
+									<div class="form-authorization__item">
+										<label for="email">Email:</label>
+										<input type="email" name="username" id="email" required />
+									</div>
+									<div class="form-authorization__item">
+										<label for="password">Password:</label>
+										<input type="password" name="password" id="password" required />
+									</div>
+								</div>
+								<button class="button" type="submit">Увійти</button>
+							</form>
+							<a class="button" href="/">На головну сторінку</a>	
+						</div>
+					
+					</div>
+				</section>
+			</main>
+		<%-include('sections/footer.ejs')%>
+	</div>
+	<% if (messages && messages.length> 0) { %>
+		<div>
+			<% messages.forEach(message=> { %>
+				<p>
+					<%= message %>
+				</p>
+				<% }) %>
+		</div>
+		<% } %>
+</body>
+
+</html>

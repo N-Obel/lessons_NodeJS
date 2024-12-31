@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<title>Register</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__title">Вітаємо у нашому магазині</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="page__register register">
+				<div class="register__container">
+					<div class="register__body">
+						<h1 class="register__title">Дані для реєстрації:</h1>
+						<form class="register__form form-register" action="/users/register" method="POST">
+							<div class="form-register__body">
+								<div class="form-register__item">
+									<label>Email: 
+										<input type="email" name="email" required>
+									</label>
+								</div>
+								<div class="form-register__item">
+									<label>Password: 
+										<input type="password" name="password" required>
+									</label>
+								</div>
+							</div>
+							<button class="button" type="submit">Реєстрація</button>
+						</form>
+						<a class="button" href="/">На головну сторінку</a>	
+					</div>
+				</div>
+			</section>
+			<% if (errors?.length> 0) { %>
+				<div class="errors">
+					<ul class="errors__list">
+						<% errors.forEach(error=> { %>
+							<li>
+								<%= error.msg %>
+							</li>
+							<% }) %>
+					</ul>
+				</div>
+				<% } %>
+		</main>
+	</div>
+	<%-include('sections/footer.ejs')%>
+</body>
+
+</html>
