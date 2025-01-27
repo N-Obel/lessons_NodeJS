@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Додати новий продукт</title>
+	<!-- Підключення CSS для стилів -->
+	<link rel="stylesheet" href="../style/main.css" />
+	<!-- Підключення необхідних скриптів -->
+	<script src="../scripts/RequestManager.js"></script>
+	<script src="../scripts/FormManager.js"></script>
+	<script src="../scripts/ListDataManager.js"></script>
+	<script src="../scripts/settings.js"></script>
+	<script src="../scripts/HeaderManager.js"></script>
+	<script src="../scripts/UsersApiManager.js"></script>
+	<script src="../scripts/ProductsApiManager.js"></script>
+</head>
+
+<body>
+	<script>
+		//Використання класу HeaderManager для створення заголовка з меню
+		document.addEventListener("DOMContentLoaded", async () => {
+			//----- Вставка заголовку
+			const headerManager = new HeaderManager(
+				"products/addForm.html",
+				menuItems
+			);
+		});
+	</script>
+	<!-- Контейнер -->
+	<h1 class="title">Форма Продукту</h1>
+	<div id="product-form">
+
+	</div>
+	<!-- Спіннер завантаження -->
+	<div class="loading" id="loading-spinner" style="display: none;">
+		<div class="spinner"></div>
+		Завантаження...
+	</div>
+	<!-- Повідомлення про помилку -->
+	<div class="error-message" id="error-message" style="display: none;">
+		Виникла помилка при завантаженні даних.
+	</div>
+	<hr />
+
+	<script>
+		// Функція, що виконується при завантаженні сторінки
+		document.addEventListener("DOMContentLoaded", async () => {
+			// Функція для отримання даних та відображення форми
+			async function fetchDataAndDisplay() {
+				const loadingSpinner = document.getElementById("loading-spinner");
+				const errorMessage = document.getElementById("error-message");
+				const container = document.getElementById("product-form");
+
+				try {
+					loadingSpinner.style.display = "block";
+					container.innerHTML = "";
+					errorMessage.style.display = "none";
+
+					//----- Вставка форми
+					let prodObj = {};
+					const urlParams = new URLSearchParams(window.location.search);
+					const id = urlParams.get("id") || "";
+
+					if (id) {
+						product = await ProductsApiManager.getProductById(id)
+					}
+					
+					if (prodObj.image && !prodObj.image.startsWith("data:")) {
+						prodObj.image = "data:image;base64," + prodObj.image;
+					}
+
+					const submitCallback = async (data) => {
+						await ProductsApiManager.addProduct(data, id);
+					};
+					//---
+
+					const fields = [
+						{
+							name: "title",
+							type: "text",
+							required: true,
+							label: "Назва товару",
+						},
+						{ name: "price", type: "number", required: true, label: "Ціна" },
+						{ name: "description", type: "text", label: "Опис товару" },
+						{
+							name: "image",
+							type: "file",
+							accept: "image/",
+							label: "Зображення",
+						},
+					];
+					const form = new FormManager(fields, submitCallback, prodObj || {});
+					form.render("product-form");
+				} catch (error) {
+					console.error("Помилка при завантаженні даних:", error);
+					errorMessage.style.display = "block";
+				} finally {
+					loadingSpinner.style.display = "none";
+				}
+			}
+
+			// Виклик функції для отримання та відображення даних
+			fetchDataAndDisplay();
+		});
+	</script>
+</body>
+
+</html>
